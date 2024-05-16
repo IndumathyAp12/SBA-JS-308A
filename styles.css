@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  img {
+    margin: 5px;
+    width: 200px;
+    height: auto;
+    border-radius: 4px;
+  }
+  
