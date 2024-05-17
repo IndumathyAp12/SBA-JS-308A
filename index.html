@@ -5,16 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS web App</title>
-    <script defer src="script.mjs"></script>
+    <script defer src="output.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <select id="dogNamesDropdown">
-        <option value="" disabled selected>Select a Dog breed</option>
-      </select>
-      <div id="dogInfoContainer">
-        <!-- Dog image and details will be displayed here -->
-    </div>
+    <header>
+        <h1>Dog Adoption</h1>
+        <div class="topnav a">
+            <a class="active" href="#home">Home</a>
+            <a href="#About us">About US</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact US</a>
+            </div>
+    </header>
+    <main>
+        <select id="dogNamesDropdown">
+            <option value="" disabled selected>Select a Dog breed</option>
+          </select>
+          <div id="dogInfoContainer">
+          </div>
+    </main>
 </body>
+<footer>
+    <p>&copy; 2024 Dog Adoption Agency</p>
+</footer>
 </html>
