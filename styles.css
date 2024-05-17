@@ -1,41 +1,33 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dropdown-container {
+  position: relative;
+  width: 50px; 
   }
-  
-  .search-container {
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    padding: 8px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  #gallery {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  img {
-    margin: 5px;
-    width: 200px;
-    height: auto;
-    border-radius: 4px;
-  }
-  
+
+#breed-dropdown {
+  width: 20%;
+  padding: 10px;
+  appearance: none; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#breed-info {
+  margin-top: 20px;
+}
+
+#breed-image {
+  max-width: 30%;
+  margin-top: 20px;
+}

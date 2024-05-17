@@ -1,41 +1,61 @@
-const API_KEY = 'live_f7E1LRLlXdnm3H81y935qczDOHKqwxYOgvRNNitWTvFzcxS55x5XQUH0XZH7EL04';
+document.addEventListener("DOMContentLoaded", function() {
+    const API_KEY = 'live_f7E1LRLlXdnm3H81y935qczDOHKqwxYOgvRNNitWTvFzcxS55x5XQUH0XZH7EL04';
 
-// Function to handle the fetched data
-function handleData(data) {
-  if (data.length > 0) {
-    const imageData = data[0];
+    async function populateDogNamesDropdown() {
+        try {
+            let apiData = await fetch(
+                "https://api.thedogapi.com/v1/breeds",
+                {
+                    headers: {
+                        'x-api-key': API_KEY
+                    }
+                }
+            );
 
-    // Display the image on the webpage
-    const imageElement = document.createElement('img');
-    imageElement.src = imageData.url;
-    document.body.appendChild(imageElement);
+            if (!apiData.ok) {
+                throw new Error('Failed to fetch data from the API');
+            }
 
-    console.log("Image URL:", imageData.url);
-    console.log("Image ID:", imageData.id);
-  } else {
-    console.log("No image data available");
-  }
-}
+            let jsonData = await apiData.json();
+            console.log("jsonData:", jsonData);
 
-// Function to fetch data from the external API
-function fetchData() {
-  fetch("https://api.thedogapi.com/v1/images/search", {
-    headers: {
-      'x-api-key': API_KEY
+            let dogNamesDropdown = document.getElementById("dogNamesDropdown");
+            console.log("dogNamesDropdown:", dogNamesDropdown);
+
+            if (!dogNamesDropdown) {
+                throw new Error('Dropdown element not found');
+            }
+
+            jsonData.forEach(dog => {
+                let option = document.createElement("option");
+                option.text = dog.name;
+                option.value = dog.id;
+                dogNamesDropdown.add(option);
+            });
+
+            // Add event listener to the dropdown to display image and info when a dog is selected
+            dogNamesDropdown.addEventListener("change", async function() {
+                let selectedDogId = this.value;
+                let selectedDog = jsonData.find(dog => dog.id == selectedDogId);
+
+                if (selectedDog) {
+                    let dogInfoContainer = document.getElementById("dogInfoContainer");
+                    dogInfoContainer.innerHTML = ""; // Clear previous content
+
+                    let image = document.createElement("img");
+                    image.src = selectedDog.image.url;
+                    image.alt = selectedDog.name;
+                    dogInfoContainer.appendChild(image);
+
+                    let infoParagraph = document.createElement("p");
+                    infoParagraph.textContent = `Breed: ${selectedDog.breed_group}\nTemperament: ${selectedDog.temperament}`;
+                    dogInfoContainer.appendChild(infoParagraph);
+                }
+            });
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     }
-  })
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then((data) => {
-    handleData(data); 
-  })
-  .catch((error) => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
-}
 
-fetchData();
+    populateDogNamesDropdown();
+});
