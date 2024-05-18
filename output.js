@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function displayDogInfo(selectedDog, dogInfoContainer) {
-        dogInfoContainer.innerHTML = ""; // Clear previous content
+        dogInfoContainer.innerHTML = ""; 
 
         const image = document.createElement("img");
         image.src = selectedDog.image.url;
@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const infoParagraph = document.createElement("p");
         infoParagraph.textContent = `Breed: ${selectedDog.breed_group}\nTemperament: ${selectedDog.temperament}`;
         dogInfoContainer.appendChild(infoParagraph);
+        
+        
     }
 
     async function populateDogNamesDropdown() {
@@ -47,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 dogNamesDropdown.add(option);
             });
 
-            // Add event listener to the dropdown to display image and info when a dog is selected
             dogNamesDropdown.addEventListener("change", function() {
                 const selectedDogId = this.value;
                 const selectedDog = apiData.find(dog => dog.id == selectedDogId);
