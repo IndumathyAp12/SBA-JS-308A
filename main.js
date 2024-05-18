@@ -1,7 +1,7 @@
 // main.js
 
 import { fetchData, createDogOption, displayDogInfo } from './script.js';
-// import { adoptDog } from './adoptDog.js';
+import { createDogListing } from './adoptDog.js';
 document.addEventListener("DOMContentLoaded", function () {
     const API_KEY = 'live_f7E1LRLlXdnm3H81y935qczDOHKqwxYOgvRNNitWTvFzcxS55x5XQUH0XZH7EL04';
 
@@ -30,14 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (selectedDog) {
                     const dogInfoContainer = document.getElementById("dogInfoContainer");
                     displayDogInfo(selectedDog, dogInfoContainer);
-                    // adoptDog(selectedDogId)
-                    //     .then(adoptionResult => {
-                    //         console.log('Adoption Result:', adoptionResult);
-                    //     })
-                    //     .catch(error => {
-                    //         console.error('Error adopting dog:', error.message);
-                    //     });
                 }
+                                    adoptDog(selectedDogId)
+                        .then(adoptionResult => {
+                            console.log('Adoption Result:', adoptionResult);
+                        })
+                        .catch(error => {
+                            console.error('Error adopting dog:', error.message);
+                        });
             });
         } catch (error) {
             console.error('Error:', error.message);
