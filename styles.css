@@ -5,14 +5,17 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
+  background-color:bisque;
 }
 
 .container {
-  background-color: #3fa8e6;
-  color: #fff;
+  color: #102724;
   text-align: center;
   padding: 1em 0;
   width: 100%;
+  background-image: url('images.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .topnav {
@@ -21,7 +24,7 @@ body {
   justify-content: flex-start;
   padding: 30px;
   gap: 20px;
-}
+  }
 
 .adopt-info-container {
   display: flex;
