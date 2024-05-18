@@ -1,35 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
+// main.js
+
+import { fetchData, createDogOption, displayDogInfo } from './script.js';
+// import { adoptDog } from './adoptDog.js';
+document.addEventListener("DOMContentLoaded", function () {
     const API_KEY = 'live_f7E1LRLlXdnm3H81y935qczDOHKqwxYOgvRNNitWTvFzcxS55x5XQUH0XZH7EL04';
-
-    async function fetchData(url, options) {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-            throw new Error('Failed to fetch data from the API');
-        }
-        return response.json();
-    }
-
-    function createDogOption(dog) {
-        const option = document.createElement("option");
-        option.text = dog.name;
-        option.value = dog.id;
-        return option;
-    }
-
-    function displayDogInfo(selectedDog, dogInfoContainer) {
-        dogInfoContainer.innerHTML = ""; 
-
-        const image = document.createElement("img");
-        image.src = selectedDog.image.url;
-        image.alt = selectedDog.name;
-        dogInfoContainer.appendChild(image);
-
-        const infoParagraph = document.createElement("p");
-        infoParagraph.textContent = `Breed: ${selectedDog.breed_group}\nTemperament: ${selectedDog.temperament}`;
-        dogInfoContainer.appendChild(infoParagraph);
-        
-        
-    }
 
     async function populateDogNamesDropdown() {
         try {
@@ -49,13 +23,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 dogNamesDropdown.add(option);
             });
 
-            dogNamesDropdown.addEventListener("change", function() {
+            dogNamesDropdown.addEventListener("change", function () {
                 const selectedDogId = this.value;
                 const selectedDog = apiData.find(dog => dog.id == selectedDogId);
 
                 if (selectedDog) {
                     const dogInfoContainer = document.getElementById("dogInfoContainer");
                     displayDogInfo(selectedDog, dogInfoContainer);
+                    // adoptDog(selectedDogId)
+                    //     .then(adoptionResult => {
+                    //         console.log('Adoption Result:', adoptionResult);
+                    //     })
+                    //     .catch(error => {
+                    //         console.error('Error adopting dog:', error.message);
+                    //     });
                 }
             });
         } catch (error) {
