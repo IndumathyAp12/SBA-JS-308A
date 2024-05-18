@@ -14,11 +14,10 @@ export function createDogListing(dog) {
 }
 
 function adoptDog(selectedDog) {
-    // Simulating adoption process
-    const index = dogs.findIndex(dog => dog.name === selectedDog.name);
+        const index = dogs.findIndex(dog => dog.name === selectedDog.name);
     if (index !== -1) {
-        dogs.splice(index, 1); // Remove the adopted dog from the list
-        updateDogList(); // Update the UI to reflect the adoption
+        dogs.splice(index, 1); 
+        updateDogList(); 
         return `${selectedDog.name} has been adopted!`;
     } else {
         throw new Error(`${selectedDog.name} is not available for adoption.`);
@@ -27,8 +26,8 @@ function adoptDog(selectedDog) {
 
 function updateDogList() {
     const dogList = document.querySelector("main");
-    dogList.innerHTML = ""; // Clear existing dog listings
-    dogs.forEach(createDogListing); // Re-populate the dog listings
+    dogList.innerHTML = ""; 
+    dogs.forEach(createDogListing); 
 }
 
 const dogs = [

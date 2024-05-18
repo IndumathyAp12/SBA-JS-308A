@@ -20,6 +20,7 @@ body {
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 30px;
+  gap: 20px;
 }
 
 .adopt-info-container {
@@ -35,7 +36,27 @@ body {
   width: 50%;
   padding: 20px;
 }
-
+.dog-listing {
+  width: 300px; 
+  margin-right: 20px; 
+  margin-bottom: 20px; 
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.dog-listing button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 footer {
   background-color: #333;
   color: #fff;
